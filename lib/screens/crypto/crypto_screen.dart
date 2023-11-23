@@ -25,6 +25,7 @@ class _CryptoScreenState extends State<CryptoScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.black,
         title: const Text(
           "CoinRich",
