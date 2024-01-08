@@ -5,7 +5,9 @@ import '../../widgets/crypto_card.dart';
 import 'crypto_provider.dart';
 
 class CryptoScreen extends StatefulWidget {
-  const CryptoScreen({super.key});
+
+  final String? searchTerm;
+  const CryptoScreen({super.key, this.searchTerm});
 
   @override
   State<CryptoScreen> createState() => _CryptoScreenState();
@@ -16,7 +18,7 @@ class _CryptoScreenState extends State<CryptoScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<CryptoDataNotifier>().fetchCryptoData();
+    context.read<CryptoDataNotifier>().fetchCryptoSearchData(widget.searchTerm);
   }
 
   @override

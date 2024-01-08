@@ -16,4 +16,14 @@ class CryptoDataNotifier with ChangeNotifier {
       debugPrint('Error fetching data: $e');
     }
   }
+
+  Future<void> fetchCryptoSearchData(String? searchTerm) async {
+    try {
+      _cryptoData = await _cryptoRepository.getSearchCryptoData(searchTerm);
+      debugPrint('Crypto data fetched: $_cryptoData');
+      notifyListeners();
+    } catch (e) {
+      debugPrint('Error fetching data: $e');
+    }
+  }
 }

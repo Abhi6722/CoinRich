@@ -1,5 +1,6 @@
 import 'package:cash_rich/screens/crypto/crypto_provider.dart';
 import 'package:cash_rich/screens/crypto/crypto_screen.dart';
+import 'package:cash_rich/screens/crypto/crypto_search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       title: 'CoinRich',
-      home: const CryptoScreen(),
+      home: CryptoSearchScreen(),
     );
   }
 }

@@ -45,4 +45,32 @@ class CryptoRepository {
 
     return cryptoData;
   }
+
+  Future<List<CryptoModel>> getSearchCryptoData(String? searchTerm) async {
+    final Map<String, dynamic> data = await _cryptoService.fetchSearchCryptoData(searchTerm);
+    final List<CryptoModel> cryptoData = [];
+
+    if (data.containsKey('data')) {
+      final Map<String, dynamic> coinsData = data['data'];
+      coinsData.forEach((key, value) {
+        final coinData = value as Map<String, dynamic>;
+        final name = coinData['name'];
+        final percentChange24h = coinData['quote']['USD']['percent_change_24h'];
+        final cmcRank = coinData['cmc_rank'];
+        final priceUSD = coinData['quote']['USD']['price'];
+        final coinSymbol = coinData['symbol'];
+
+        cryptoData.add(CryptoModel(
+          name: name,
+          percentChange24h: percentChange24h,
+          cmcRank: cmcRank,
+          priceUSD: priceUSD,
+          coinSymbol: coinSymbol,
+        ));
+      });
+    }
+
+    return cryptoData;
+  }
+
 }
